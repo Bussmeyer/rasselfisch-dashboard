@@ -27,6 +27,7 @@ pipedrive.Deals.getAll({}, function(err, deals) {
           value: deals[i].value,
           add_time: deals[i].add_time,
           update_time: deals[i].update_time,
+          status: deals[i].status,
           groups: groups,
         }
       }, function (error, response) {
