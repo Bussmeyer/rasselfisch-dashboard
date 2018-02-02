@@ -1,0 +1,23 @@
+{
+  "name": "rasselfisch-dashboard",
+  "version": "1.0.0",
+  "description": "A business dashboard for a small shop.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bussmeyer/rasselfisch-dashboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bussmeyer/rasselfisch-dashboard/issues"
+  },
+  "homepage": "https://github.com/Bussmeyer/rasselfisch-dashboard#readme",
+  "dependencies": {
+    "elasticsearch": "^14.0.0",
+    "pipedrive": "^3.0.2"
+  }
+}
