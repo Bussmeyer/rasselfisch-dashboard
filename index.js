@@ -1,16 +1,13 @@
 require('dotenv').config()
 
+var Deals = require('./deals');
 var Elasticsearch = require('elasticsearch');
-var Pipedrive = require('pipedrive');
 
-var pipedrive = new Pipedrive.Client(process.env.PIPEDRIVE_API_TOKEN, { strictMode: true });
-var client = new Elasticsearch.Client({
-  host: process.env.ELASTICSEARCH_HOST,
-  log: process.env.ELASTICSEARCH_LOGLEVEL,
-});
-
-pipedrive.Deals.getAll({}, function(err, deals) {
-    if (err) throw err;
+Deals.getAll(function(deals){
+    var client = new Elasticsearch.Client({
+      host: process.env.ELASTICSEARCH_HOST,
+      log: process.env.ELASTICSEARCH_LOGLEVEL,
+    });
 
     for (var i = 0; i < deals.length; i++) {
       if (!!deals[i]['48fb37075b475d243a63105efc2c430ada90162e']) {
