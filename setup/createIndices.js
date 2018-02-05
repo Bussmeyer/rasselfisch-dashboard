@@ -56,10 +56,18 @@ client.indices.delete({
         index: 'persons',
         body: {
             "mappings": {
-                "deal": {
+                "person": {
                     "properties": {
                         "id": {
                             "type": "integer"
+                        },
+                        "add_time": {
+                            "type": "date",
+                            "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+                        },
+                        "update_time": {
+                            "type": "date",
+                            "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
                         }
                     }
                 }
