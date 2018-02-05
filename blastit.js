@@ -25,7 +25,7 @@ exports.toElasticsearch = function (deals) {
                 groups: groups
             }
         }, function (error, response) {
-
+            if (error) return console.log(error);
         });
     });
 };
