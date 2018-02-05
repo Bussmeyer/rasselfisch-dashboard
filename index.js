@@ -1,7 +1,7 @@
 var Config = require('dotenv').config();
 var Deals = require('./pipedrive/deals');
 var Persons = require('./pipedrive/persons');
-var Blastit = require('./blastit');
+var Blastit = require('./blastit/blastit');
 var Elasticsearch = require('elasticsearch');
 
 Deals.getAll(function (deals) {
