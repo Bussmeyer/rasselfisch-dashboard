@@ -1,12 +1,12 @@
 var Elasticsearch = require('elasticsearch');
 
-
 var client = new Elasticsearch.Client({
     host: process.env.ELASTICSEARCH_HOST,
     log: process.env.ELASTICSEARCH_LOGLEVEL
 });
 
 client.indices.delete({
+    ignoreUnavailable: true,
     index: 'deals'
 }, function (error, response) {
     if (error) return console.log(error);
@@ -45,4 +45,27 @@ client.indices.delete({
     });
 });
 
-
+client.indices.delete({
+    ignoreUnavailable: true,
+    index: 'persons'
+}, function (error, response) {
+    if (error) return console.log(error);
+    client.indices.create({
+        waitForActiveShards: 2,
+        updateAllTypes: true,
+        index: 'persons',
+        body: {
+            "mappings": {
+                "deal": {
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }, function (error, response) {
+        if (error) return console.log(error);
+    });
+});
