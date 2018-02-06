@@ -1,10 +1,14 @@
 var Config = require('dotenv').config();
-var Deals = require('./pipedrive/deals');
 var Persons = require('./pipedrive/persons');
 var Blastit = require('./blastit/blastit');
+
+var Pipedrive = require('pipedrive');
 var Elasticsearch = require('elasticsearch');
 
-Deals.getAll(function (deals) {
+var pipedrive = new Pipedrive.Client(process.env.PIPEDRIVE_API_TOKEN, {strictMode: true});
+
+pipedrive.Deals.getAll({}, function (err, deals) {
+    if (err) throw err;
     Blastit.toElasticsearch(deals);
 });
 
