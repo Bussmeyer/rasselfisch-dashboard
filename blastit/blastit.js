@@ -17,11 +17,13 @@ exports.toElasticsearch = function (elasticsearchObjects) {
             id: elasticsearchObject.id,
             body: {
                 id: elasticsearchObject.id,
+                person_id: elasticsearchObject.person_id,
                 title: elasticsearchObject.title,
                 value: elasticsearchObject.value,
                 add_time: elasticsearchObject.add_time,
                 update_time: elasticsearchObject.update_time,
                 status: elasticsearchObject.status,
+                pipeline_id: elasticsearchObject.pipeline_id,
                 groups: groups
             }
         }, function (error, response) {
