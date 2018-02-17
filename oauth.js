@@ -1,3 +1,4 @@
+var Config = require('dotenv').config();
 var request = require('request');
 
 var options = {
@@ -6,9 +7,11 @@ var options = {
     headers: {'content-type': 'application/json'},
     body:
         {
-            grant_type: 'client_credentials',
-            client_id: '',
-            client_secret: '',
+            grant_type: 'password',
+            username: process.env.SUMUP_USER,
+            password: process.env.SUMUP_PASS,
+            client_id: process.env.SUMUP_CLIENT_ID,
+            client_secret: process.env.SUMUP_CLIENT_SECRET,
             scope: 'transactions.history'
         },
     json: true
